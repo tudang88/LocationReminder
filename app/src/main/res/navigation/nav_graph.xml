@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/reminderListFragment">
+
+    <fragment
+        android:id="@+id/reminderListFragment"
+        android:name="com.udacity.project4.locationreminders.reminderslist.ReminderListFragment"
+        android:label="ReminderListFragment">
+        <action
+            android:id="@+id/to_save_reminder"
+            app:destination="@id/saveReminderFragment" />
+        <action
+            android:id="@+id/to_details_reminder"
+            app:destination="@id/reminderDetailsFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.udacity.project4.locationreminders.RemindersActivity"
+        android:label="MainActivity" />
+    <fragment
+        android:id="@+id/saveReminderFragment"
+        android:name="com.udacity.project4.locationreminders.savereminder.SaveReminderFragment"
+        android:label="Add Reminder">
+        <action
+            android:id="@+id/action_saveReminderFragment_to_reminderListFragment"
+            app:destination="@id/reminderListFragment" />
+        <action
+            android:id="@+id/action_saveReminderFragment_to_selectLocationFragment"
+            app:destination="@id/selectLocationFragment" />
+        <argument
+            android:name="entryId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="null" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectLocationFragment"
+        android:name="com.udacity.project4.locationreminders.selectreminderlocation.SelectLocationFragment"
+        android:label="Select Location" />
+    <activity
+        android:id="@+id/authenticationActivity"
+        android:name="com.udacity.project4.authentication.AuthenticationActivity"
+        android:label="activity_authentication"
+        tools:layout="@layout/activity_authentication" />
+    <activity
+        android:id="@+id/reminderDescriptionActivity"
+        android:name="com.udacity.project4.locationreminders.description.ReminderDescriptionActivity"
+        android:label="ReminderDescriptionActivity" />
+    <fragment
+        android:id="@+id/reminderDetailsFragment"
+        android:name="com.udacity.project4.locationreminders.reminderdetails.ReminderDetailsFragment"
+        android:label="ReminderDetailsFragment" >
+        <action
+            android:id="@+id/action_reminderDetailsFragment_to_saveReminderFragment"
+            app:destination="@id/saveReminderFragment"
+            app:popUpTo="@id/reminderListFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_reminderDetailsFragment_to_reminderListFragment"
+            app:destination="@id/reminderListFragment" />
+        <argument
+            android:name="entryId"
+            app:argType="string" />
+    </fragment>
+
+</navigation>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <!--Data item that holds the reminder details-->
+        <variable
+            name="reminderDataItem"
+            type="com.udacity.project4.locationreminders.reminderslist.ReminderDataItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <EditText
+            android:id="@+id/act_reminderTitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginRight="@dimen/margin_normal"
+            android:focusable="false"
+            android:text="@{reminderDataItem.title}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/act_reminderDescriptionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginRight="@dimen/margin_normal"
+            android:focusable="false"
+            android:gravity="start"
+            android:lines="10"
+            android:text="@{reminderDataItem.description}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/act_reminderTitleText" />
+
+        <TextView
+            android:id="@+id/act_selectLocationText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:drawableStart="@drawable/ic_location"
+            android:drawableLeft="@drawable/ic_location"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:text="@string/reminder_location"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/act_reminderDescriptionText" />
+
+        <TextView
+            android:id="@+id/act_selectedLocationText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginRight="@dimen/margin_normal"
+            android:text="@{reminderDataItem.location}"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/act_selectLocationText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/act_selectLocationText"
+            tools:text="Location" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/act_done_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_normal"
+            android:backgroundTint="@color/colorAccent"
+            android:src="@drawable/ic_done"
+            app:fabSize="normal"
+            app:layout_anchorGravity="bottom|right|end"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@android:color/white" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
